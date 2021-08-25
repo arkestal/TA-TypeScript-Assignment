@@ -1,12 +1,10 @@
-import React, { useEffect, useState, Dispatch, SetStateAction } from "react";
-import logo from "./logo.svg";
+import React, { useState, Dispatch, SetStateAction } from "react";
 import "./App.css";
-//comment
 
 interface CreateUserParams{
-    name: string;
-    lastName: string;
-    image: {uri:string};
+  name: string;
+  lastName: string;
+  image: {uri:string};
 };
 
 interface User{
