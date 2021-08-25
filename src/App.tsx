@@ -9,7 +9,7 @@ const createUser = (user: any) => ({
   created: new Date().getTime(),
 });
 
-function createInput(labelName: any, onChange: any) {
+function createInput(labelName: string, onChange: any) {
   const handleChange = (e: any) => onChange(e.target.value);
   return (
     <label>
