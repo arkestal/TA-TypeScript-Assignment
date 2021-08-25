@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, Dispatch, SetStateAction } from "react";
 import logo from "./logo.svg";
 import "./App.css";
 //comment
@@ -16,9 +16,6 @@ interface User{
   created:number;
 };
 
-
-
-
 const createUser = (u : CreateUserParams) => ({
   givenName: u.name,
   surname: u.lastName,
@@ -26,8 +23,10 @@ const createUser = (u : CreateUserParams) => ({
   created: new Date().getTime(),
 });
 
-function createInput(labelName: string, onChange: any) {
-  const handleChange = (e: any) => onChange(e.target.value);
+function createInput(labelName: string, onChange: Dispatch<SetStateAction<string>>) {
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    onChange(e.target.value);
+  }
   return (
     <label>
       {labelName}:<input type="text" onChange={handleChange}></input>
@@ -36,7 +35,7 @@ function createInput(labelName: string, onChange: any) {
 }
 
 function App() {
-  const [user, setUser] = useState< User  >();
+  const [user, setUser] = useState< User >();
   const [givenName, setGivenName] = useState("");
   const [surname, setSurname] = useState("");
   const [imageUrl, setImageUrl] = useState("");
