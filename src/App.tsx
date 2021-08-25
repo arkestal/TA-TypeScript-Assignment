@@ -3,16 +3,26 @@ import logo from "./logo.svg";
 import "./App.css";
 //comment
 
-interface User{
+interface CreateUserParams{
     name: string;
     lastName: string;
     image: {uri:string};
 };
 
-const createUser = (user : User) => ({
-  givenName: user.name,
-  surname: user.lastName,
-  picture: user.image,
+interface User{
+  givenName: string,
+  surname: string,
+  picture: {uri:string},
+  created:number;
+};
+
+
+
+
+const createUser = (u : CreateUserParams) => ({
+  givenName: u.name,
+  surname: u.lastName,
+  picture: u.image,
   created: new Date().getTime(),
 });
 
@@ -26,7 +36,7 @@ function createInput(labelName: string, onChange: any) {
 }
 
 function App() {
-  const [user, setUser] = useState<User>();
+  const [user, setUser] = useState< User  >();
   const [givenName, setGivenName] = useState("");
   const [surname, setSurname] = useState("");
   const [imageUrl, setImageUrl] = useState("");
