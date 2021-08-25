@@ -2,7 +2,14 @@ import React, { useEffect, useState } from "react";
 import logo from "./logo.svg";
 import "./App.css";
 //comment
-const createUser = (user: any) => ({
+// class user{
+
+//   private name: string;
+//   lastName: string;
+//   image: {uri:string}
+//   constructor (n: string, )
+// }
+const createUser = (user: {name:string, lastname: string, image: {uri:string}}) => ({
   givenName: user.name,
   surname: user.lastname,
   picture: user.image,
@@ -24,7 +31,7 @@ function App() {
   const [surname, setSurname] = useState();
   const [imageUrl, setImageUrl] = useState();
 
-  const onSubmit = (e: any) => {
+  const onSubmit = (e:any) => {
     e.preventDefault();
     const newUser = createUser({
       name: givenName,
